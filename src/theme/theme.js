@@ -4,21 +4,32 @@ const theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: "#80FFDB"
+      main: "#1D267D"
     },
     secondary: {
-      main:"#09091e"
+      main:"#0C134F"
     },
     third: {
       main: "#141c44"
     }, 
     text: {
-      main: "#954aac",
-      light: "#bca0df"
+      main: "#5C469C",
+      light: "#D4ADFC"
+    },
+    extra: {
+      main: "#ffcc75", 
+      light: "#ffe490"
+    },
+    grey: {
+      main: "#a5a0a0"
     }
-
   }, 
   typography: {
+    logo:{
+      fontFamily: "'Sigmar', cursive;",
+      fontWeight: 400,
+      fontSize: '1.5rem',
+    },
     h1: {
       fontWeight: 600,
       fontSize: '3rem',

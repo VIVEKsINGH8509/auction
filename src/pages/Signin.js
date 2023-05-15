@@ -90,11 +90,12 @@ const Signin = () => {
         ...formikSi.values,
         username: formikSi.values.username,
         password: formikSi.values.password,
+        roles: formikSi.values.username === 'admin' ? 'admin' : 'user'
       }
       try {
         const { data } = await axios.post("http://localhost:8088/auth/login", loginCreds)
         console.log(data)
-        setCurrentUser({username: data.username, isLoggedIn: true, accessToken: data.accessToken})
+        setCurrentUser({username: data.username, isLoggedIn: true, accessToken: data.accessToken, roles: data.roles})
         toast.success('Successfully Logged In')
         formikSi.resetForm()
         navigate('/')

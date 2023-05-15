@@ -4,7 +4,7 @@ const theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: "#1D267D"
+      main: "#ffffff"
     },
     secondary: {
       main:"#0C134F"
@@ -29,6 +29,11 @@ const theme = createTheme({
       fontFamily: "'Sigmar', cursive;",
       fontWeight: 400,
       fontSize: '1.5rem',
+    },
+    logoLarge:{
+      fontFamily: "'Sigmar', cursive;",
+      fontWeight: 400,
+      fontSize: '2.5rem',
     },
     h1: {
       fontWeight: 600,
@@ -83,7 +88,7 @@ const theme = createTheme({
       fontFamily: "'Poppins', sans-serif;",
     },
     subtitle1: {
-      fontSize: '0.875rem',
+      fontSize: '1rem',
       fontWeight: 400,
       fontFamily: "'Poppins', sans-serif;",
     },
@@ -92,6 +97,11 @@ const theme = createTheme({
       fontWeight: 400,
       fontFamily: "'Poppins', sans-serif;",
     },
+    subheadings: {
+      fontSize: '1.2rem',
+      fontWeight: 400,
+      fontFamily: "'Vollkorn', serif;",
+    }
   }
 })
 

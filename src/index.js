@@ -4,17 +4,22 @@ import App from './App';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider, CssBaseline } from "@mui/material"
 import theme from "./theme/theme"
+import { UserProvider } from './contexts/userContext'
+import { ToastContainer } from 'react-toastify';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <BrowserRouter >
-        <Routes>
-          <Route path="/*" element={<App />} />
-        </Routes>
-      </BrowserRouter>
+      <UserProvider>
+        <CssBaseline />
+        <ToastContainer theme="colored"/>
+        <BrowserRouter >
+          <Routes>
+            <Route path="/*" element={<App />} />
+          </Routes>
+        </BrowserRouter>
+      </UserProvider>
     </ThemeProvider>
   </React.StrictMode>
 );

@@ -4,18 +4,14 @@ const theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: "#ffffff"
+      main: "#ffcc75"
     },
     secondary: {
-      main:"#0C134F"
+      main:"#f2f2f2"
     },
-    third: {
-      main: "#141c44"
+    accent: {
+      main: "#ffb084"
     }, 
-    text: {
-      main: "#5C469C",
-      light: "#D4ADFC"
-    },
     extra: {
       main: "#ffcc75", 
       light: "#ffe490"
@@ -25,6 +21,7 @@ const theme = createTheme({
     }
   }, 
   typography: {
+    color: "#fff",
     logo:{
       fontFamily: "'Sigmar', cursive;",
       fontWeight: 400,

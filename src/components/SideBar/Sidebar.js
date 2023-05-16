@@ -49,6 +49,13 @@ const Sidebar = () => {
     toast.success('Successfully logged out!')
   }
 
+  const onHoverOut = () => {
+    setOpenDrawer(false)
+    setInd(-1)
+    setHoverSettings(false)
+    setHoverSign(false)
+  }
+
   return (
     <Box height="100vh" backgroundColor="transparent" display="flex" >
 
@@ -103,7 +110,7 @@ const Sidebar = () => {
           <List >
             {LPItems.map((item, index) => {
               return (
-                <ListItem key={index} onMouseOver={() => onHoverEffect(index)} onMouseLeave={() => setInd(-1)}>
+                <ListItem key={index} onMouseOver={() => onHoverEffect(index)} onMouseLeave={() => onHoverOut()}>
                   <ListItemButton disableGutters sx={{ "&:hover": { backgroundColor: "transparent", } }} >
                     <ListItemIcon sx={index === ind ? { transform: 'scale(1.2)', color: "#fff" } : { color: "grey.main" }} >
                       {item.title}
@@ -116,14 +123,14 @@ const Sidebar = () => {
         </Box>
         <Box visibility={currentUser.isLoggedIn ? 'visible' : 'hidden'} maxWidth="12vw">
           <List >
-            <ListItem onMouseOver={() => hoverTwo('sett')} onMouseLeave={() => setHoverSettings(false)}>
+            <ListItem onMouseOver={() => hoverTwo('sett')} onMouseLeave={() => onHoverOut()}>
               <ListItemButton disableGutters sx={{ "&:hover": { backgroundColor: "transparent", } }} >
                 <ListItemIcon sx={hoverSettings ? { transform: 'scale(1.2)', color: "#fff" } : { color: "grey.main" }}>
                   Settings
                 </ListItemIcon>
               </ListItemButton>
             </ListItem>
-            <ListItem onMouseOver={() => hoverTwo('sign')} onMouseLeave={() => setHoverSign(false)}>
+            <ListItem onMouseOver={() => hoverTwo('sign')} onMouseLeave={() => onHoverOut()}>
               <ListItemButton disableGutters sx={{ "&:hover": { backgroundColor: "transparent", } }} >
                 <ListItemIcon sx={hoverSign ? { transform: 'scale(1.2)', color: "#fff" } : { color: "grey.main" }} onClick={() =>  logout()}>
                   {currentUser.isLoggedIn ? `Logout` : `Login`}

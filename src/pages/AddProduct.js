@@ -7,6 +7,7 @@ import { useFormik } from 'formik'
 import * as yup from 'yup'
 
 import { UserContext } from '../contexts/userContext'
+import ProductCard from '../components/ProductCard'
 
 const AddProduct = () => {
   const [{ currentUser }] = useContext(UserContext)
@@ -54,8 +55,8 @@ const AddProduct = () => {
   }, [])
 
   return (
-    <Box display='flex' paddingTop="4rem" paddingLeft="4rem" sx={{width: '100%', height: '100vh'}}>
-      <Box sx={{ width: '100%', backgroundColor: 'accent.main' }}>
+    <Box display='flex' sx={{ height: '100vh'}}>
+      <Box sx={{ width: '65%' }}>
         <Typography variant='h3' sx={{marginBottom: '2rem'}}>Add a Product</Typography>
         <Stack>
           <Typography variant='h5'>General Information</Typography>
@@ -69,7 +70,6 @@ const AddProduct = () => {
                 variant="standard"
                 id="name"
                 name="name"
-                // label="name"
                 value={formik.values.name}
                 onChange={formik.handleChange}
                 error={formik.touched.name && Boolean(formik.errors.name)}
@@ -80,8 +80,11 @@ const AddProduct = () => {
           </Box>
         </Stack>
       </Box>
-      <Box sx={{ width: '40%', backgroundColo: 'extra.main' }}>
-
+      <Box sx={{ width: '40%', backgroundColor: 'secondary.main' }}>
+        <Typography variant='h4'>Preview Product Card</Typography>
+        <Box display='flex' alignItems='center' justifyContent='center'>
+          <ProductCard  />
+        </Box>
       </Box>
     </Box>
   )

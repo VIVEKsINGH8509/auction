@@ -11,7 +11,7 @@ const Layout = () => {
   <>
     <Box position="relative">
       <Sidebar position="sticky" top={0} left={0} zIndex="100" />
-      <Box position='absolute' sx={{top: 0, left: 0, paddingLeft: '8rem', maxWidth: '100vw'}}>
+      <Box position='absolute' sx={{top: 0, left: 0, paddingLeft: '8rem', width: '100%'}}>
         <Outlet />
       </Box>
       </Box>

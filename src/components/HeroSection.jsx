@@ -1,4 +1,5 @@
 import React from "react";
+import ProductCard from "./ProductCard";
 import {
   Box,
   List,
@@ -18,37 +19,37 @@ import CountUp from "react-countup";
 const HeroSection = () => {
   return (
     <>
-      <Box>
+      <Box paddingLeft='4rem' paddingTop='4rem'>
         <Box width="50%" display="flex" flexDirection="column" gap="1.5em">
           <Box>
             <Box display="flex" flexDirection="column" gap="10px">
-              <Typography variant="h4" color="extra.main">
+              <Typography variant="h1" color="extra.main">
                 Explore the best collections of products right here.
               </Typography>
-              <Typography variant="subtitle1">
+              <Typography variant="h4">
                 {" "}
                 Buy and Sell Products from your home in few clicks.{" "}
               </Typography>
             </Box>
           </Box>
-          <Box>
-            <Button>
+          <Box display='flex' gap='3em'>
+            <Button variant="contained" size="large">
               <Typography color="extra.main">
                 <Link
                   to="/signup"
-                  color="extra.main"
-                  sx={{ textDecoration: "none" }}
+                //   color="extra.main"
+                  sx={{ textDecoration: "none", color:'black'  }}
                 >
                   Explore
                 </Link>
               </Typography>
             </Button>
-            <Button>
+            <Button variant="contained" size="large">
               <Typography>
                 <Link
                   to="/signup"
-                  color="extra.main"
-                  sx={{ textDecoration: "none" }}
+                //   color="black"
+                  sx={{ textDecoration: "none", color:'black' }}
                 >
                   Buy/Sell
                 </Link>
@@ -86,7 +87,9 @@ const HeroSection = () => {
           </Box>
         </Box>
 
-        <Box></Box>
+        <Box>
+        <ProductCard/>
+        </Box>
       </Box>
     </>
   );

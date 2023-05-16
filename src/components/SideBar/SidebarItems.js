@@ -7,22 +7,27 @@ import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 export const LPItems = [
   {
     title: "Home",
-    icon: <HomeIcon />
+    icon: <HomeIcon />,
+    link: '/'
   },
   {
     title: "Explore",
-    icon: <ExploreIcon />
+    icon: <ExploreIcon />,
+    link: '/explore'
   },
   {
     title: "Add a Product",
-    icon: <AddIcon />
+    icon: <AddIcon />,
+    link: '/addProduct'
   },
   {
     title: "Live Auction",
-    icon: <WhatshotIcon />
+    icon: <WhatshotIcon />,
+    link: '/explore'
   },
   {
     title: "Contact Us",
-    icon: <ContactSupportIcon />
+    icon: <ContactSupportIcon />,
+    link: '/contactus'
   },
 ]

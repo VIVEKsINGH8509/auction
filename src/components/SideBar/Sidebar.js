@@ -49,6 +49,17 @@ const Sidebar = () => {
     toast.success('Successfully logged out!')
   }
 
+  const onHoverOut = () => {
+    setOpenDrawer(false)
+    setInd(-1)
+    setHoverSettings(false)
+    setHoverSign(false)
+  }
+
+  const handleSBIclick = (link) => {
+    navigate(link)
+  }
+
   return (
     <Box height="100vh" backgroundColor="transparent" display="flex" >
 
@@ -64,7 +75,7 @@ const Sidebar = () => {
               return (
                 <ListItem key={index} onMouseOver={() => onHoverEffect(index)} onMouseLeave={() => setInd(-1)}>
                   <ListItemButton disableGutters sx={{ "&:hover": { backgroundColor: "transparent", } }} >
-                    <ListItemIcon sx={index === ind ? { transform: 'scale(1.2)', color: "#fff" } : { color: "grey.main" }} disablePadding disableGutters >
+                    <ListItemIcon sx={index === ind ? { transform: 'scale(1.2)', color: "#fff" } : { color: "grey.main" }} disablePadding disableGutters onClick={() => handleSBIclick(item.link)}>
                       {item.icon}
                     </ListItemIcon>
                   </ListItemButton>
@@ -93,19 +104,21 @@ const Sidebar = () => {
         </Box>
       </Box>
 
-      {openDrawer ? <Box sx={{ zIndex: 1200, height: "100%", backgroundColor: "transparent", width: "100%" }} display="flex" flexDirection="column" onClick={() => closeHoverEffect()}>
+      {openDrawer ? <Box sx={{ zIndex: 1200, height: "100%", width: "100%" }} display="flex" flexDirection="column" onClick={() => closeHoverEffect()}>
         <Box textAlign="center" visibility="hidden">
           <Typography variant="logo" color="#fff">kB.com</Typography>
           <Typography variant="subtitle2" color="#fff">khareedoBecho</Typography>
           <Button variant="outlined" size="small" sx={{ color: "extra.light", outlineColor: "extra.light", borderColor: "extra.light", "&:hover": { borderColor: "extra.main", color: "extra.main" } }}>Sign In {`>`}</Button>
         </Box>
-        <Box display="flex" flexDirection="column" justifyContent="center" height="90vh" maxWidth="12vw">
+        <Box display="flex" flexDirection="column" justifyContent="center" height="90vh" maxWidth="12vw" 
+        // sx={{background: 'linear-gradient(90deg, rgba(6,6,6,1) 21%, rgba(255,255,255,0) 100%)'}}
+        >
           <List >
             {LPItems.map((item, index) => {
               return (
-                <ListItem key={index} onMouseOver={() => onHoverEffect(index)} onMouseLeave={() => setInd(-1)}>
+                <ListItem key={index} onMouseOver={() => onHoverEffect(index)} onMouseLeave={() => onHoverOut()}>
                   <ListItemButton disableGutters sx={{ "&:hover": { backgroundColor: "transparent", } }} >
-                    <ListItemIcon sx={index === ind ? { transform: 'scale(1.2)', color: "#fff" } : { color: "grey.main" }} >
+                    <ListItemIcon sx={index === ind ? { transform: 'scale(1.2)', color: "#fff" } : { color: "grey.main" }} onClick={() => handleSBIclick(item.link)}>
                       {item.title}
                     </ListItemIcon>
                   </ListItemButton>
@@ -116,14 +129,14 @@ const Sidebar = () => {
         </Box>
         <Box visibility={currentUser.isLoggedIn ? 'visible' : 'hidden'} maxWidth="12vw">
           <List >
-            <ListItem onMouseOver={() => hoverTwo('sett')} onMouseLeave={() => setHoverSettings(false)}>
+            <ListItem onMouseOver={() => hoverTwo('sett')} onMouseLeave={() => onHoverOut()}>
               <ListItemButton disableGutters sx={{ "&:hover": { backgroundColor: "transparent", } }} >
                 <ListItemIcon sx={hoverSettings ? { transform: 'scale(1.2)', color: "#fff" } : { color: "grey.main" }}>
                   Settings
                 </ListItemIcon>
               </ListItemButton>
             </ListItem>
-            <ListItem onMouseOver={() => hoverTwo('sign')} onMouseLeave={() => setHoverSign(false)}>
+            <ListItem onMouseOver={() => hoverTwo('sign')} onMouseLeave={() => onHoverOut()}>
               <ListItemButton disableGutters sx={{ "&:hover": { backgroundColor: "transparent", } }} >
                 <ListItemIcon sx={hoverSign ? { transform: 'scale(1.2)', color: "#fff" } : { color: "grey.main" }} onClick={() =>  logout()}>
                   {currentUser.isLoggedIn ? `Logout` : `Login`}

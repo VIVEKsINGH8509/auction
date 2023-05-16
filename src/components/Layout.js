@@ -8,16 +8,12 @@ import HeroSection from "./HeroSection";
 
 const Layout = () => {
   return (
-    <>
-      <Box position="relative">
-        <Box display='flex' gap='1.5em'>
-        <Sidebar position="sticky" top={0} left={0} zIndex="100" />
-        <HeroSection />
-        </Box>
-        <Footer />
-        <Box>
-          <Outlet />
-        </Box>
+  <>
+    <Box position="relative">
+      <Sidebar position="sticky" top={0} left={0} zIndex="100" />
+      <Box position='absolute' sx={{top: 0, left: 0, paddingLeft: '8rem', maxWidth: '100vw'}}>
+        <Outlet />
+      </Box>
       </Box>
     </>
   );

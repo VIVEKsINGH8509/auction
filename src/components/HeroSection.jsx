@@ -22,9 +22,9 @@ const HeroSection = () => {
   return (
     <>
       <Box paddingLeft="4rem" paddingTop="4rem" display="flex" gap='3em'>
-        <Box width="50%" display="flex" flexDirection="column" gap="1.5em">
+        <Box width="50%" display="flex" flexDirection="column" gap="2.5em">
           <Box>
-            <Box display="flex" flexDirection="column" gap="10px">
+            <Box display="flex" flexDirection="column" gap="18px">
               <Typography variant="h1" color="extra.main">
                 Explore the best collections of products right here.
               </Typography>

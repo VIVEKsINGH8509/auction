@@ -6,6 +6,7 @@ import pic from '../assets/auctionLogin.jpg'
 const Explore = () => {
   const obj = {
     name: "T-shirt for something",
+    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
     type: 'T-shirt',
     bid_start_price: '',
     bid_current_price: 1000,

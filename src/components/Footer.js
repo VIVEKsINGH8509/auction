@@ -30,7 +30,7 @@ import ExploreIcon from "@mui/icons-material/Explore";
 
 const Footer = () => {
   return (
-    <Paper style={{padding:'25px'}}>
+    <Paper style={{ padding: "25px" }}>
       <Box display="flex" flexDirection="column" gap="1em">
         <Typography variant="h4" color="#fff">
           KhareedoBecho
@@ -47,12 +47,9 @@ const Footer = () => {
         <Button>About</Button>
       </Box> */}
 
-      <Box display="flex" gap="15rem" marginTop='2rem'>
+      <Box display="flex" gap="15rem" marginTop="2rem">
         <Box>
-          <ListSubheader
-            disableGutters
-            style={{ background: "none"}}
-          >
+          <ListSubheader disableGutters sx={{ background: "none" }}>
             <Typography color="extra.main">FEATURES</Typography>
           </ListSubheader>
           <List disablePadding>
@@ -70,7 +67,7 @@ const Footer = () => {
         <Box>
           <ListSubheader
             // disableGutters
-            style={{ background: "none"}}
+            sx={{ background: "none" }}
           >
             <Typography color="extra.main">Go To</Typography>
           </ListSubheader>
@@ -87,7 +84,7 @@ const Footer = () => {
           </List>
         </Box>
         <Box>
-          <ListSubheader style={{ background: "none" }}>
+          <ListSubheader sx={{ background: "none" }}>
             <Typography color="extra.main">OUR SOCIAL</Typography>
           </ListSubheader>
           <List component={Stack} direction="row" disablePadding width="20%">

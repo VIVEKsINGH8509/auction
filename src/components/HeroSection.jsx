@@ -15,11 +15,13 @@ import {
 } from "@mui/material";
 import { Link } from "@mui/material";
 import CountUp from "react-countup";
+import img from '../assets/shoppingImg.svg'
+import imgTwo from '../assets/imgshop.svg'
 
 const HeroSection = () => {
   return (
     <>
-      <Box paddingLeft='4rem' paddingTop='4rem'>
+      <Box paddingLeft="4rem" paddingTop="4rem" display="flex" gap='3em'>
         <Box width="50%" display="flex" flexDirection="column" gap="1.5em">
           <Box>
             <Box display="flex" flexDirection="column" gap="10px">
@@ -32,13 +34,13 @@ const HeroSection = () => {
               </Typography>
             </Box>
           </Box>
-          <Box display='flex' gap='3em'>
+          <Box display="flex" gap="3em">
             <Button variant="contained" size="large">
               <Typography color="extra.main">
                 <Link
                   to="/signup"
-                //   color="extra.main"
-                  sx={{ textDecoration: "none", color:'black'  }}
+                  //   color="extra.main"
+                  sx={{ textDecoration: "none", color: "black" }}
                 >
                   Explore
                 </Link>
@@ -48,17 +50,17 @@ const HeroSection = () => {
               <Typography>
                 <Link
                   to="/signup"
-                //   color="black"
-                  sx={{ textDecoration: "none", color:'black' }}
+                  //   color="black"
+                  sx={{ textDecoration: "none", color: "black" }}
                 >
                   Buy/Sell
                 </Link>
               </Typography>
             </Button>
           </Box>
-          <Box display='flex' gap='2em'>
+          <Box display="flex" gap="2em">
             <Box>
-              <Typography variant="h4" display='flex' alignItems='center'>
+              <Typography variant="h4" display="flex" alignItems="center">
                 <CountUp end={10000} />+
               </Typography>
               <Typography>
@@ -67,7 +69,7 @@ const HeroSection = () => {
               </Typography>
             </Box>
             <Box>
-              <Typography variant="h4" display='flex' alignItems='center'>
+              <Typography variant="h4" display="flex" alignItems="center">
                 <CountUp end={1000} />+
               </Typography>
               <Typography>
@@ -76,7 +78,7 @@ const HeroSection = () => {
               </Typography>
             </Box>
             <Box>
-              <Typography variant="h4" display='flex' alignItems='center'>
+              <Typography variant="h4" display="flex" alignItems="center">
                 <CountUp end={1000} />+
               </Typography>
               <Typography>
@@ -87,8 +89,8 @@ const HeroSection = () => {
           </Box>
         </Box>
 
-        <Box>
-        <ProductCard/>
+        <Box display="flex">
+          <img src={imgTwo} width='75%'/>
         </Box>
       </Box>
     </>

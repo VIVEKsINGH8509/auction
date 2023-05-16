@@ -3,6 +3,7 @@ import { Card, CardMedia, CardContent, Box, Typography, Stack, Button } from '@m
 import pic from '../assets/auctionLogin.jpg'
 import VerifiedIcon from '@mui/icons-material/Verified';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
+import CurrencyRupeeRoundedIcon from '@mui/icons-material/CurrencyRupeeRounded';
 import moment from 'moment'
 import CountDown from 'react-countdown'
 
@@ -13,7 +14,7 @@ const ProductCard = ({ data }) => {
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
       setIsBidLive(true)
-    }  else {
+    } else {
       // Render a countdown
       return (
         <span>
@@ -35,7 +36,7 @@ const ProductCard = ({ data }) => {
 
   console.log(liveOn, 'Live on')
   return (
-    <Card sx={{ height: '425px', width: "300px", position: 'relative' }}>
+    <Card sx={{ width: "300px", position: 'relative' }}>
       {/* {isBidLive ? null : <Box sx={{ position: 'absolute', top: 0, left: 0, height: '100%', width: '100%', backgroundColor: 'grey.main', opacity: '.65', zIndex: 30 }}></Box>} */}
       <Box position='relative' sx={{ height: '300px', width: '100%' }}>
         <CardMedia sx={{ position: 'absolute', top: 0, left: 0, height: '300px', width: '100%' }} image={pic} component='img' />
@@ -51,7 +52,7 @@ const ProductCard = ({ data }) => {
                   <WhatshotIcon sx={{ color: 'error.main' }} />
                   <Typography>Bid is Live</Typography>
                 </Box> :
-                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px'}}>
+                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px' }}>
                   <Typography>Bid Live in </Typography>
                   <Typography>
                     <CountDown
@@ -67,14 +68,28 @@ const ProductCard = ({ data }) => {
       </Box>
       <CardContent>
         <Stack>
+          <Stack>
+            <Typography sx={{ marginBottom: '0.2rem', fontSize: '1.2rem', color: 'primary.main'}}>{data?.name}</Typography>
+            <Typography variant='subtitle2' sx={{ marginBottom: '0.2rem' }}>{data?.description}</Typography>
+            <Box display='flex' alignItems='center' gap={2}>
+              <Typography sx={{ color: 'primary.main' }}>Type:</Typography>
+              <Typography variant='subtitle2' sx={{ marginBottom: '0.2rem' }}>{data?.type}</Typography>
+            </Box>
+          </Stack>
           <Box display='flex' justifyContent='space-between'>
             <Stack>
-              <Typography>{data?.name}</Typography>
-              <Typography>{data?.type}</Typography>
+              <Typography sx={{ color: 'primary.main' }}>Bid Start Price:</Typography>
+              <Box display='flex' alignItems='center' gap='0.2em'>
+                <CurrencyRupeeRoundedIcon sx={{ fontSize: 'medium' }} />
+                <Typography>{data?.bid_start_price}</Typography>
+              </Box>
             </Stack>
             <Stack>
-              <Typography>Current Bid:</Typography>
-              <Typography>{data?.bid_start_price ? data?.bid_start_price : data?.bid_current_price}</Typography>
+              <Typography sx={{ color: 'primary.main' }}>Current Bid:</Typography>
+              <Box display='flex' alignItems='center' gap='0.1em'>
+                <CurrencyRupeeRoundedIcon sx={{ fontSize: 'medium' }} />
+                <Typography>{data?.bid_current_price}</Typography>
+              </Box>
             </Stack>
           </Box>
           <Box mt={2}>

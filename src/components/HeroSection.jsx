@@ -35,10 +35,12 @@ const HeroSection = () => {
             </Box>
           </Box>
           <Box display="flex" gap="3em">
-            <Button variant="contained" size="large">
-              <Typography color="extra.main">
+            <Button variant="contained" size="large" onClick={() => {
+              <Link to = '/login'/>
+            }}>
+              <Typography color="extra.main" >
                 <Link
-                  to="/signup"
+                  to="/login"
                   //   color="extra.main"
                   sx={{ textDecoration: "none", color: "black" }}
                 >

@@ -26,15 +26,15 @@ const ProductCard = ({ data }) => {
 
   useEffect(() => {
     const dateToday = new Date()
-    console.log(moment(dateToday).diff(moment(data?.bid_start_time)))
+    // console.log(moment(dateToday).diff(moment(data?.bid_start_time)))
     if (moment(dateToday).diff(moment(data?.bid_start_time)) < 0) {
       setIsBidLive(false)
       setLiveOn(Math.abs(moment(dateToday).diff(moment(data?.bid_start_time))))
-      console.log(Math.abs(moment(dateToday).diff(moment(data?.bid_start_time))))
+      // console.log(Math.abs(moment(dateToday).diff(moment(data?.bid_start_time))))
     }
   }, [])
 
-  console.log(liveOn, 'Live on')
+  // console.log(liveOn, 'Live on')
   return (
     <Card sx={{ width: "300px", position: 'relative' }}>
       {/* {isBidLive ? null : <Box sx={{ position: 'absolute', top: 0, left: 0, height: '100%', width: '100%', backgroundColor: 'grey.main', opacity: '.65', zIndex: 30 }}></Box>} */}

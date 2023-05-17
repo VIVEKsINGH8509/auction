@@ -12,13 +12,16 @@ const theme = createTheme({
     accent: {
       main: "#ffb084"
     }, 
+    accent2: {
+      main: '#262626'
+    },
     extra: {
       main: "#ffcc75", 
       light: "#ffe490"
     },
     grey: {
       main: "#a5a0a0"
-    }
+    }, 
   }, 
   typography: {
     color: "#fff",

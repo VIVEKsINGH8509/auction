@@ -21,7 +21,7 @@ const Sidebar = () => {
     setInd(i)
   }
 
-  console.log(currentUser)
+  // console.log(currentUser)
 
   const closeHoverEffect = () => {
     setOpenDrawer((false))

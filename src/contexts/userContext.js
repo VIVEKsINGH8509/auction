@@ -7,7 +7,8 @@ export const UserProvider = ({children}) => {
       name: '',
       isLoggedIn: false,
       accessToken: '',
-      roles: ''
+      roles: '',
+      uid: ''
   })
   
   if (currentUser.isLoggedIn){
@@ -15,6 +16,7 @@ export const UserProvider = ({children}) => {
       localStorage.setItem('userName', currentUser.name)
       localStorage.setItem('accessToken', currentUser.accessToken)
       localStorage.setItem('roles', currentUser.roles)
+      localStorage.setItem('uid', currentUser.uid)
   }
 
   useEffect(() => {
@@ -22,12 +24,14 @@ export const UserProvider = ({children}) => {
       const username = localStorage.getItem("userName")
       const accessToken = localStorage.getItem("accessToken")
       const roles = localStorage.getItem("roles")
+      const uid = localStorage.getItem("uid")
       if (islogin){
           setCurrentUser({
               name: username,
               isLoggedIn: islogin,
               accessToken,
-              roles
+              roles, 
+              uid
           })
       }
 

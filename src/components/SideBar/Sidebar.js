@@ -61,13 +61,13 @@ const Sidebar = () => {
   }
 
   return (
-    <Box height="100vh" backgroundColor="transparent" display="flex" >
-
+    <Box height="100vh" backgroundColor="transparent" display="flex" position='fixed' zIndex={1200}>
+      {/* {openDrawer ? <Box sx={{backgroundColor: 'green', width: '100%', height: '100%', zIndex: 1100, position: 'absolute', top: 0, left: 0 }} onClick={() => closeHoverEffect()} /> : null } */}
       <Box sx={{ zIndex: 1200, height: "100%", backgroundColor: "transparent" }} display="flex" flexDirection="column" alignItems="center" justifyContent="space-evenly">
         <Box textAlign="center">
           <Typography variant="logo" color="#fff">kB.com</Typography>
           <Typography variant="subtitle2" color="#fff">khareedoBecho</Typography>
-          <Button onClick={()=>navigate('/login')} variant="outlined" size="small" sx={{ color: "extra.light", outlineColor: "extra.light", borderColor: "extra.light", "&:hover": { borderColor: "extra.main", color: "extra.main" } }}>Sign In {`>`}</Button>
+          <Button onClick={() => navigate('/login')} variant="outlined" size="small" sx={{ color: "extra.light", outlineColor: "extra.light", borderColor: "extra.light", "&:hover": { borderColor: "extra.main", color: "extra.main" } }}>Sign In {`>`}</Button>
         </Box>
         <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="90vh">
           <List >
@@ -75,7 +75,7 @@ const Sidebar = () => {
               return (
                 <ListItem key={index} onMouseOver={() => onHoverEffect(index)} onMouseLeave={() => setInd(-1)}>
                   <ListItemButton disableGutters sx={{ "&:hover": { backgroundColor: "transparent", } }} >
-                    <ListItemIcon sx={index === ind ? { transform: 'scale(1.2)', color: "#fff" } : { color: "grey.main" }} disablePadding disableGutters onClick={() => handleSBIclick(item.link)}>
+                    <ListItemIcon sx={index === ind ? { transform: 'scale(1.2)', color: "#fff" } : { color: "grey.main" }} onClick={() => handleSBIclick(item.link)}>
                       {item.icon}
                     </ListItemIcon>
                   </ListItemButton>
@@ -95,7 +95,7 @@ const Sidebar = () => {
             </ListItem>
             <ListItem onMouseOver={() => hoverTwo('sign')} onMouseLeave={() => setHoverSign(false)}>
               <ListItemButton disableGutters sx={{ "&:hover": { backgroundColor: "transparent", } }} >
-                <ListItemIcon sx={hoverSign ? { transform: 'scale(1.2)', color: "#fff" } : { color: "grey.main" }} onClick={() =>  logout()}>
+                <ListItemIcon sx={hoverSign ? { transform: 'scale(1.2)', color: "#fff" } : { color: "grey.main" }} onClick={() => logout()}>
                   {currentUser.isLoggedIn ? <LogoutIcon /> : <LoginIcon />}
                 </ListItemIcon>
               </ListItemButton>
@@ -110,8 +110,8 @@ const Sidebar = () => {
           <Typography variant="subtitle2" color="#fff">khareedoBecho</Typography>
           <Button variant="outlined" size="small" sx={{ color: "extra.light", outlineColor: "extra.light", borderColor: "extra.light", "&:hover": { borderColor: "extra.main", color: "extra.main" } }}>Sign In {`>`}</Button>
         </Box>
-        <Box display="flex" flexDirection="column" justifyContent="center" height="90vh" maxWidth="12vw" 
-        // sx={{background: 'linear-gradient(90deg, rgba(6,6,6,1) 21%, rgba(255,255,255,0) 100%)'}}
+        <Box display="flex" flexDirection="column" justifyContent="center" height="90vh" maxWidth="12vw"
+          sx={{ background: 'linear-gradient(90deg, rgba(18,18,18,0.9) 77%, rgba(255,255,255,0) 100%)' }}
         >
           <List >
             {LPItems.map((item, index) => {
@@ -127,7 +127,9 @@ const Sidebar = () => {
             })}
           </List>
         </Box>
-        <Box visibility={currentUser.isLoggedIn ? 'visible' : 'hidden'} maxWidth="12vw">
+        <Box visibility={currentUser.isLoggedIn ? 'visible' : 'hidden'} maxWidth="12vw"
+          sx={{ background: 'linear-gradient(90deg, rgba(18,18,18,0.9) 77%, rgba(255,255,255,0) 100%)' }}
+        >
           <List >
             <ListItem onMouseOver={() => hoverTwo('sett')} onMouseLeave={() => onHoverOut()}>
               <ListItemButton disableGutters sx={{ "&:hover": { backgroundColor: "transparent", } }} >
@@ -138,7 +140,7 @@ const Sidebar = () => {
             </ListItem>
             <ListItem onMouseOver={() => hoverTwo('sign')} onMouseLeave={() => onHoverOut()}>
               <ListItemButton disableGutters sx={{ "&:hover": { backgroundColor: "transparent", } }} >
-                <ListItemIcon sx={hoverSign ? { transform: 'scale(1.2)', color: "#fff" } : { color: "grey.main" }} onClick={() =>  logout()}>
+                <ListItemIcon sx={hoverSign ? { transform: 'scale(1.2)', color: "#fff" } : { color: "grey.main" }} onClick={() => logout()}>
                   {currentUser.isLoggedIn ? `Logout` : `Login`}
                 </ListItemIcon>
               </ListItemButton>

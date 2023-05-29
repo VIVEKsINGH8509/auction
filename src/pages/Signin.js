@@ -95,7 +95,7 @@ const Signin = () => {
       try {
         const { data } = await axios.post("http://localhost:8088/auth/login", loginCreds)
         console.log(data)
-        setCurrentUser({username: data.username, isLoggedIn: true, accessToken: data.accessToken, roles: data.roles})
+        setCurrentUser({username: data.username, isLoggedIn: true, accessToken: data.accessToken, roles: data.roles, uid: data.uid})
         toast.success('Successfully Logged In')
         formikSi.resetForm()
         navigate('/')
@@ -243,7 +243,7 @@ const Signin = () => {
                         </InputAdornment>
                     }}
                   />
-                  <Button type="submit" sx={{ backgroundColor: 'extra.main', marginTop: "2rem" }}>Sign Up </Button>
+                  <Button type="submit" sx={{ backgroundColor: 'extra.main', marginTop: "2rem", color: 'black' }}>Sign Up </Button>
                 </Stack>
               </form>}
           </CardContent>

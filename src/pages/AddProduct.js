@@ -3,18 +3,16 @@ import { Box, Typography, Stack, TextField, Divider, MenuItem, Button } from '@m
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo'
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import { DateTimeField } from '@mui/x-date-pickers/DateTimeField'
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import 'react-toastify/dist/ReactToastify.css'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
-import moment from 'moment'
+
 
 import { UserContext } from '../contexts/userContext'
 import ProductCard from '../components/ProductCard'
 import { axiosInstance } from '../config/axiosInterceptor';
+import moment from 'moment'
 
 const types = [
   {
@@ -69,8 +67,8 @@ const AddProduct = () => {
   })
 
   const onChange = (file) => {
-    
-    if(!file) {
+
+    if (!file) {
       setDataUri('');
       return;
     }
@@ -79,7 +77,6 @@ const AddProduct = () => {
       .then(dataUri => {
         setDataUri(dataUri)
       })
-    
   }
 
   const validationSchema = yup.object({
@@ -111,15 +108,16 @@ const AddProduct = () => {
       name: '',
       type: '',
       description: '',
-      bid_start_time: '',
-      bid_end_time: '',
+      bid_start_time: moment(new Date()),
+      bid_end_time: moment((new Date()).valueOf() + 1000 * 3600 * 24),
       bid_start_price: '',
     },
-    // validationSchema: validationSchema,
+    validationSchema: validationSchema,
     onSubmit: async (values) => {
       console.log('reaching here')
       const loginCreds = {
         ...formik.values,
+        uid: currentUser.uid,
         name: formik.values.name,
         type: formik.values.type,
         description: formik.values.description,
@@ -131,6 +129,7 @@ const AddProduct = () => {
       try {
         const { data } = await axiosInstance.post('/products', loginCreds)
         console.log(data)
+        toast.success('Product added')
 
       } catch (error) {
         if (error.response.status === 401) {
@@ -183,6 +182,7 @@ const AddProduct = () => {
                     variant="filled"
                     id="name"
                     name="name"
+                    label="Product Name"
                     value={formik.values.name}
                     onChange={formik.handleChange}
                     error={formik.touched.name && Boolean(formik.errors.name)}
@@ -204,6 +204,7 @@ const AddProduct = () => {
                     variant="filled"
                     id="description"
                     name="description"
+                    label="Description"
                     value={formik.values.description}
                     onChange={formik.handleChange}
                     error={formik.touched.description && Boolean(formik.errors.description)}
@@ -226,6 +227,7 @@ const AddProduct = () => {
                     variant='filled'
                     select
                     name="type"
+                    label="Type"
                     value={formik.values?.type}
                     onChange={formik.handleChange}
                     error={formik.touched?.type && Boolean(formik.errors?.type)}
@@ -253,6 +255,7 @@ const AddProduct = () => {
                     variant="filled"
                     id="bid_start_price"
                     name="bid_start_price"
+                    label="Start Bid Price"
                     value={formik.values.bid_start_price}
                     onChange={formik.handleChange}
                     error={formik.touched.bid_start_price && Boolean(formik.errors.bid_start_price)}
@@ -275,15 +278,6 @@ const AddProduct = () => {
                     <input hidden accept="image/*" multiple type="file" onChange={(e) => onChange(e.target.files[0] || null)} />
 
                   </Button>
-                  {/* <Button onClick={() => {
-                    console.log(files[0])
-                    if (!files[0]) { return }
-                    fileToDataUri(files[0])
-                      .then(dataUri => {
-                        console.log(dataUri)
-
-                      })
-                  }}> Dumy</Button> */}
                 </Stack>
               </Box>
               <Box display='flex' flexDirection='row-reverse' marginTop={2}>
@@ -293,33 +287,32 @@ const AddProduct = () => {
                 </Box>
               </Box>
             </Stack> :
-            <Stack sx={{ height: '80%' }}>
+            <Stack sx={{ height: '70vh' }}>
+
               <Box display='flex' sx={{ width: '100%', marginTop: '2rem', marginBottom: '1rem' }} alignItems='center'>
                 <Stack sx={{ width: '50%' }}>
                   <Typography variant='h5' sx={{ color: 'primary.main', fontSize: '1.3rem' }}>Bid Start Date and Time</Typography>
                   <Typography variant='subtitle2'>Provide the time when bid should commence</Typography>
                 </Stack>
                 <Stack sx={{ width: '50%' }}>
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DemoContainer components={['DateTimeField']}>
-                      <DateTimePicker
-                        label='Bid Start Date & Time'
-                        variant='filled'
-                        format='YYYY/MM/DD hh:mm a'
-                        id="bid_start_time"
-                        name="bid_start_time"
-                        value={formik.values.bid_start_time}
-                        onChange={(value) => {
-                          formik.setFieldValue('bid_start_time', value)
-                        }}
-                        error={formik.touched.bid_start_time && Boolean(formik.errors.bid_start_time)}
-                        helperText={formik.touched.bid_start_time && formik.errors.bid_start_time}
-                        sx={{ marginBottom: '1rem', width: '100%' }}
-                      />
-                    </DemoContainer>
-                  </LocalizationProvider>
+                  <DemoContainer components={['DateTimeField']} sx={{ width: '100%' }}>
+                    <DateTimePicker
+                      label='Bid Start Date & Time'
+                      variant='filled'
+                      format='YYYY/MM/DD hh:mm a'
+                      id="bid_start_time"
+                      name="bid_start_time"
+                      disableIgnoringDatePartForTimeValidation
+                      value={formik.values.bid_start_time}
+                      onChange={(value) => {
+                        formik.setFieldValue('bid_start_time', value)
+                      }}
+                      error={formik.touched.bid_start_time && Boolean(formik.errors.bid_start_time)}
+                      helperText={formik.touched.bid_start_time && formik.errors.bid_start_time}
+                      sx={{ marginBottom: '1rem', width: '100%' }}
+                    />
+                  </DemoContainer >
                 </Stack>
-
               </Box>
 
               <Divider />
@@ -330,33 +323,33 @@ const AddProduct = () => {
                   <Typography variant='subtitle2'>Provide the time when bid will end</Typography>
                 </Stack>
                 <Stack sx={{ width: '50%' }}>
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DemoContainer components={['DateTimeField']} sx={{ width: '100%' }}>
-                      <DateTimePicker
-                        // onChange={(newValue) => setValue(newValue)}
-                        label='Bid End Date & Time'
-                        variant='filled'
-                        format='YYYY/MM/DD hh:mm a'
-                        id="bid_end_time"
-                        name="bid_end_time"
-                        value={formik.values.bid_end_time}
-                        onChange={(value) => {
-                          formik.setFieldValue('bid_end_time', value)
-                        }}
-                        error={formik.touched.bid_end_time && Boolean(formik.errors.bid_end_time)}
-                        helperText={formik.touched.bid_end_time && formik.errors.bid_end_time}
-                        sx={{ marginBottom: '1rem', width: '100%' }}
-                      />
-                    </DemoContainer>
-                  </LocalizationProvider>
+                  <DemoContainer components={['DateTimeField']} sx={{ width: '100%' }}>
+                    <DateTimePicker
+                      label='Bid End Date & Time'
+                      variant='filled'
+                      format='YYYY/MM/DD hh:mm a'
+                      id="bid_end_time"
+                      name="bid_end_time"
+                      disablePast
+                      value={formik.values.bid_end_time}
+                      onChange={(value) => {
+                        formik.setFieldValue('bid_end_time', value)
+                      }}
+                      error={formik.touched.bid_end_time && Boolean(formik.errors.bid_end_time)}
+                      helperText={formik.touched.bid_end_time && formik.errors.bid_end_time}
+                      sx={{ marginBottom: '1rem', width: '100%' }}
+                    />
+                  </DemoContainer >
                 </Stack>
               </Box>
+
               <Box display='flex' flexDirection='row-reverse' marginTop={2} alignItems='flex-end' sx={{ height: '100%' }}>
-                <Box display='flex' gap={2}>
+                <Box display='flex' gap={2} sx={{}}>
                   <Button variant='contained' onClick={() => setToggle(true)}>Back</Button>
                   <Button type='submit' variant='contained' sx={{ backgroundColor: 'success.main' }}>Add Product</Button>
                 </Box>
               </Box>
+
             </Stack>
           }
         </form>
@@ -366,7 +359,7 @@ const AddProduct = () => {
       <Box sx={{ width: '40%', backgroundColor: 'accent2.main', paddingTop: '4rem', paddingLeft: '1rem' }}>
         <Typography variant='h4' mb={4}>Preview Product Card</Typography>
         <Box display='flex' alignItems='center' justifyContent='center'>
-          <ProductCard data={formik.values}/>
+          <ProductCard data={formik.values} />
         </Box>
       </Box>
     </Box>

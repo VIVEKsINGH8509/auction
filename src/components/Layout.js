@@ -1,10 +1,9 @@
-import { Outlet } from "react-router-dom";
-import { Box } from "@mui/material";
-import Footer from "./Footer";
-import Sidebar from "./SideBar/Sidebar";
+import { Outlet } from 'react-router-dom'
+import { Box } from '@mui/material'
+import Footer from './Footer'
+import Sidebar from './SideBar/Sidebar'
 
-import React from "react";
-import HeroSection from "./HeroSection";
+import React from 'react'
 
 const Layout = () => {
   return (
@@ -14,9 +13,8 @@ const Layout = () => {
       <Box position='absolute' sx={{top: 0, left: 0, paddingLeft: '8rem', width: '100%'}}>
         <Outlet />
       </Box>
-      </Box>
-    </>
-  );
-};
+    </Box>
+  </>
+)}
 
-export default Layout;
+export default Layout

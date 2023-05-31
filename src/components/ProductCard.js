@@ -10,6 +10,7 @@ import CountDown from 'react-countdown'
 const ProductCard = ({ data }) => {
   const [isBidLive, setIsBidLive] = useState()
   const [liveOn, setLiveOn] = useState()
+  const imgSrc = URL.createObjectURL(data.img)
 
   const renderer = ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
@@ -39,7 +40,7 @@ const ProductCard = ({ data }) => {
     <Card sx={{ width: "300px", position: 'relative' }}>
       {/* {isBidLive ? null : <Box sx={{ position: 'absolute', top: 0, left: 0, height: '100%', width: '100%', backgroundColor: 'grey.main', opacity: '.65', zIndex: 30 }}></Box>} */}
       <Box position='relative' sx={{ height: '300px', width: '100%' }}>
-        <CardMedia sx={{ position: 'absolute', top: 0, left: 0, height: '300px', width: '100%' }} image={pic} component='img' />
+        <CardMedia sx={{ position: 'absolute', top: 0, left: 0, height: '300px', width: '100%' }} image={imgSrc} component='img' src={data.img}/>
         <Box display="flex" flexDirection="Column" justifyContent="space-between" sx={{ position: 'absolute', top: 0, left: 0, height: '100%', width: '100%' }}>
           <Box sx={{ display: 'flex', flexDirection: 'row-reverse', width: '100%', paddingRight: '0.5rem', paddingTop: '0.5rem' }}>
             <VerifiedIcon sx={data?.verified ? { color: 'success.main' } : { visibility: 'hidden' }} />
@@ -68,12 +69,12 @@ const ProductCard = ({ data }) => {
       </Box>
       <CardContent>
         <Stack>
-          <Stack>
+          <Stack sx={{ marginBottom: '0.4rem' }}>
             <Typography sx={{ marginBottom: '0.2rem', fontSize: '1.2rem', color: 'primary.main'}}>{data?.name}</Typography>
             <Typography variant='subtitle2' sx={{ marginBottom: '0.2rem' }}>{data?.description}</Typography>
             <Box display='flex' alignItems='center' gap={2}>
               <Typography sx={{ color: 'primary.main' }}>Type:</Typography>
-              <Typography variant='subtitle2' sx={{ marginBottom: '0.2rem' }}>{data?.type}</Typography>
+              <Typography variant='subtitle2' >{data?.type}</Typography>
             </Box>
           </Stack>
           <Box display='flex' justifyContent='space-between'>

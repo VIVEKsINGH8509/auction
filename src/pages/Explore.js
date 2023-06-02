@@ -14,6 +14,7 @@ import { CardActionArea } from "@mui/material";
 import { Button, Link } from "@mui/material";
 import { Scale } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import { TextField } from "@mui/material";
 
 const Explore = () => {
   const obj = {
@@ -42,6 +43,9 @@ const Explore = () => {
 
       <Box display="flex" flexDirection="column" gap="3em">
 
+      <TextField id="outlined-basic" label="Search" variant="outlined" />
+
+
         <Box display="flex" flexDirection="column">
           <Box
             display="flex"
@@ -59,15 +63,9 @@ const Explore = () => {
             </Button>
           </Box>
           <Box display="flex" justifyContent="space-between">
-            {/* <Box sx={style}> */}
             <ProductCard data={obj} />
-            {/* </Box> */}
-            {/* <Box sx={style}> */}
             <ProductCard data={obj} />
-            {/* </Box> */}
-            {/* <Box sx={style}> */}
             <ProductCard data={obj} />
-            {/* </Box> */}
           </Box>
         </Box>
 

@@ -16,6 +16,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import ExploreIcon from "@mui/icons-material/Explore";
+import { useNavigate } from "react-router-dom";
 
 // KhareedoBecho.com
 // A convenient and exciting way to buy and sell goods online. Bid on a variety of items and get great deals with just a few clicks.
@@ -29,6 +30,8 @@ import ExploreIcon from "@mui/icons-material/Explore";
 // For design refer https://dribbble.com/shots/18282421-NFT-Marketplace-Website/attachments/13489479?mode=media
 
 const Footer = () => {
+
+  const navigate = useNavigate()
   return (
     <Paper style={{ padding: "25px" }}>
       <Box display="flex" flexDirection="column" gap="1em">
@@ -41,11 +44,6 @@ const Footer = () => {
           variety of items and get great deals with just a few clicks.
         </Typography>
       </Box>
-      {/* <Box display="flex">
-        <Button>Explore</Button>
-        <Button>Sign Up</Button>
-        <Button>About</Button>
-      </Box> */}
 
       <Box display="flex" gap="15rem" marginTop="2rem">
         <Box>
@@ -72,10 +70,10 @@ const Footer = () => {
             <Typography color="extra.main">Go To</Typography>
           </ListSubheader>
           <List disablePadding component={Stack}>
-            <ListItem disablePadding>
+            <ListItem disablePadding onClick={() => {navigate('/explore')}}>
               <ListItemButton>Explore</ListItemButton>
             </ListItem>
-            <ListItem disablePadding>
+            <ListItem disablePadding onClick={() => {navigate('/login')}}>
               <ListItemButton>Sign Up</ListItemButton>
             </ListItem>
             <ListItem disablePadding>

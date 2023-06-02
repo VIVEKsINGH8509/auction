@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import AddProduct from './pages/AddProduct';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment'
+import Contact from './pages/Contact';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="explore" element={<Explore />} />
             <Route path="addProduct" element={<AddProduct />} />
+            <Route path="contactus" element={<Contact />} />
           </Route>
         </Routes>
       </LocalizationProvider>

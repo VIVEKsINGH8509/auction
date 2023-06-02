@@ -17,8 +17,11 @@ import { Link } from "@mui/material";
 import CountUp from "react-countup";
 import img from '../assets/shoppingImg.svg'
 import imgTwo from '../assets/imgshop.svg'
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+
+  const navigate = useNavigate();
   return (
 
     <Box paddingLeft="4rem" paddingTop="4rem" display="flex" alignItems="center" justifyContent='center' gap='3em' sx={{ height: '80vh' }}>
@@ -34,25 +37,13 @@ const HeroSection = () => {
         </Box>
         <Box display="flex" gap="3em">
           <Button variant="contained" size="large">
-            <Typography color="extra.main">
-              <Link
-                to="/signup"
-                //   color="extra.main"
-                sx={{ textDecoration: "none", color: "black" }}
-              >
-                Explore
-              </Link>
+            <Typography onClick={() => {navigate('/explore')}}>
+              Explore
             </Typography>
           </Button>
-          <Button variant="contained" size="large">
+          <Button variant="contained" size="large" onClick={() => {navigate('/login')}}>
             <Typography>
-              <Link
-                to="/signup"
-                //   color="black"
-                sx={{ textDecoration: "none", color: "black" }}
-              >
-                Buy/Sell
-              </Link>
+              BUY/SEll
             </Typography>
           </Button>
         </Box>
